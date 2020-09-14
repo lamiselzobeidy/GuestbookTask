@@ -1,0 +1,9 @@
+Button {
+    font-weight: bold !important;
+    color: rgb(136,96,208) !important;
+    border-color: rgb(136,96,208) !important;
+    background-color: #ff165400 !important;
+    border-radius: 25px !important;
+    border: solid 2px !important;
+  }
+  
