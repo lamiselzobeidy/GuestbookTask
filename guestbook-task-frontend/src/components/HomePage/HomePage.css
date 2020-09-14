@@ -1,0 +1,33 @@
+.homepage {
+  height: 100vh;
+}
+.messageform {
+  background-image: url("./bg.jpg");
+  border: solid rgb(182, 180, 180);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.homepagetabs {
+  background-image: url("./bg.jpg");
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: solid 2px grey;
+  border-radius: 10px;
+}
+ul {
+  list-style-type: none;
+}
+li {
+  background-image: url("./bg.jpg");
+  border: solid rgb(182, 180, 180);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#editremove {
+  width: 10px !important;
+}
+.nav-link {
+  color: rgba(136, 96, 208, 1) !important;
+}
+.msgdetail{
+  text-align: left !important;
+}
