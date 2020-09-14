@@ -1,0 +1,21 @@
+.RegistrationForm {
+    height: 65%;
+    width: 60% !important;
+  background: linear-gradient(
+    90deg,
+    rgba(136, 96, 208, 1) 0%,
+    rgba(86, 128, 233, 1) 35%,
+    rgba(136, 96, 208, 1) 100%
+  );
+  border-radius: 10px !important;
+}
+  .SwitchButton {
+    font-weight: bold !important;
+    color: #faf8f9 !important;
+    border-color: #f7f4f6 !important;
+    background-color: #ff165400 !important;
+    border-radius: 25px !important;
+    border: solid 2px !important;
+    height: 40px !important;
+  }
+  
