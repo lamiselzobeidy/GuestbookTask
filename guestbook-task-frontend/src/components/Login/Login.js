@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import './Login.css';
 
@@ -13,6 +13,8 @@ const Signin = (props) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [errorState, setErrorState] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,7 +26,9 @@ const Signin = (props) => {
         axios.post('http://localhost:9000/users/login', userData)
             .then(result => {
                 if (result.data.error) {
-                    console.log("error");
+                    console.log(result.data.error);
+                    setError(result.data.error);
+                    setErrorState(true);
                 } else {
                     userData.name = result.data.name
                     sessionStorage.setItem("user", JSON.stringify(result.data));
@@ -51,6 +55,14 @@ const Signin = (props) => {
                         <div id="btn" className="text-center">
                             <Button type="submit">Sign In</Button>
                         </div>
+                        {
+                            errorState ?
+                                <Alert variant="danger" onClose={() => setErrorState(false)}>
+                                    <p>{error}</p>
+                                </Alert>
+                                :
+                                null
+                        }
                     </Form>
                 </div>
             </div>
