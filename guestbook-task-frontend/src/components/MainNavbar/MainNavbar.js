@@ -6,15 +6,15 @@ const MainNavbar = () => {
     const username = JSON.parse(sessionStorage.getItem('user')).name;
 
     return (
-        <nav class="navbar navbar-light bg-light" id="navbar">
-            <a class="navbar-brand" id="MainLink"><img alt="" src={Logo} width="30" height="30" className="d-inline-block align-top" />{' '}The Guest Book</a>
-            <form class="form-inline">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <nav className="navbar navbar-light bg-light" id="navbar">
+            <a className="navbar-brand" id="MainLink"><img alt="" src={Logo} width="30" height="30" className="d-inline-block align-top" />{' '}The Guest Book</a>
+            <form className="form-inline">
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {username}
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" onClick={() => { sessionStorage.removeItem("user"); return (window.location = `/`); }}>Logout</a>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a className="dropdown-item" onClick={() => { sessionStorage.removeItem("user"); return (window.location = `/`); }}>Logout</a>
                     </div>
                 </div>
             </form>

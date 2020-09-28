@@ -9,6 +9,7 @@ import axios from 'axios';
 const Homepage = () => {
     const [msgText, setMsgText] = useState('');
     const [messages, setMessages] = useState([]);
+    const [replyText, setReply] = useState('');
 
     useEffect(() => {
         axios.get('http://localhost:9000/messages')
@@ -58,6 +59,17 @@ const Homepage = () => {
                 }
             });
     };
+
+    // const addReply = message => {
+    //     setMessages([message, ...messages])
+    //     const data = { id: message.id, sender: message.sender, text: message.text }
+    //     axios.post('http://localhost:9000/messages/addmessage', data)
+    //         .then(result => {
+    //             if (result.data.error) {
+    //                 return result.data
+    //             }
+    //         });
+    // };
 
     const deleteMessage = (deletedmsg, e) => {
         console.log(messages);
@@ -126,6 +138,14 @@ const Homepage = () => {
                                                 <Button style={{ width: '40px' }} className="mr-2 px-0" onClick={(e) => deleteMessage(message, e)}><FontAwesomeIcon icon={faTrash} /></Button>
                                             </Row>
                                             <p className="msgdetail">{message.text}</p>
+                                            {/* <ul className="replies">
+                                                {message.replies.map(reply => (
+                                                    <li key={reply.id} className="pl-2 pt-3">
+                                                        <h6>{reply.sender}</h6>
+                                                        <p>{reply.text}</p>
+                                                    </li>
+                                                ))}
+                                            </ul> */}
                                         </div>
                                     }
                                 </li>

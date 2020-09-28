@@ -3,6 +3,7 @@ import './WelcomePage.css';
 import Login from '../Login/Login';
 import Registration from '../Registration/Register'
 import Navbar from '../Navbar/Navbar';
+import {Button} from 'react-bootstrap';
 
 const WelcomePage = () => {
 
@@ -23,7 +24,7 @@ const WelcomePage = () => {
                                     <div className="col align-self-center" style={{ color: "white" }}>
                                         <h3 className="w-100 mx-auto mb-3 logHeading">Hello There!</h3>
                                         <p className="mb-3">You're missing a lot, sign up now and join us in whatever we're doing.</p>
-                                        <button className="text-center SwitchButton" type="submit" onClick={() => { setState(true) }}>Sign Up</button>
+                                        <Button className="text-center SwitchButton" type="submit" onClick={() => { setState(true) }}>Sign Up</Button>
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +49,7 @@ const WelcomePage = () => {
                                     <div className="col align-self-center" style={{ color: "white" }}>
                                         <h3 className="w-100 mx-auto mb-3 logHeading">welcome back!</h3>
                                         <p className="mb-3">To keep connected with us please login with your personnel info</p>
-                                        <button className="text-center SwitchButton" type="submit" onClick={() => { setState(false) }}>Sign IN</button>
+                                        <Button className="text-center SwitchButton" type="submit" onClick={() => { setState(false) }}>Sign IN</Button>
                                     </div>
                                 </div>
                             </div>

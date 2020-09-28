@@ -13,6 +13,10 @@ const MessageSchema = new Schema({
     text: {
         type: String,
         require: true
+    },
+    replies: {
+        type: [],
+        require: false
     }
 });
 
