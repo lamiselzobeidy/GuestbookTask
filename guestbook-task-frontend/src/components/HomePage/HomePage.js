@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './HomePage.css';
-import { Form, Button, Tabs, Tab, Row } from 'react-bootstrap';
+import { Form, Button, Tabs, Tab, Row, Alert } from 'react-bootstrap';
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import shortid from 'shortid';
@@ -8,6 +8,10 @@ import axios from 'axios';
 
 const Homepage = () => {
     const [msgText, setMsgText] = useState('');
+    const [MsgFlag, SetMsgFlag] = useState(false);
+    const [MsgState, SetMsgState] = useState('');
+    const [MsgFlagSuccess, SetMsgFlagSuccess] = useState(false);
+    const [MsgStateSuccess, SetMsgStateSuccess] = useState('');
     const [messages, setMessages] = useState([]);
     const [replyText, setReply] = useState('');
 
@@ -55,7 +59,14 @@ const Homepage = () => {
         axios.post('http://localhost:9000/messages/addmessage', data)
             .then(result => {
                 if (result.data.error) {
-                    return result.data
+                    console.log(result.data.error);
+                    SetMsgFlag(true);
+                    SetMsgState(result.data.error);
+                }
+                else{
+                    console.log(result.data.status);
+                    SetMsgFlagSuccess(true);
+                    SetMsgStateSuccess(result.data.status);
                 }
             });
     };
@@ -114,7 +125,22 @@ const Homepage = () => {
                                 <Form.Control value={msgText} onChange={handleChange} placeholder="enter a new message.." />
 
                             </Form.Group>
-                            <p style={{ color: 'red', textAlign: 'center' }}></p>
+                            {
+                            MsgFlag ?
+                                <Alert variant="danger" onClose={() => SetMsgFlag(false)}>
+                                    <p>{MsgState}</p>
+                                </Alert>
+                                :
+                                null
+                        }
+                        {
+                            MsgFlagSuccess ?
+                            <Alert variant="success" onClose={() => SetMsgFlagSuccess(false)} dismissible>
+                                    <p>{MsgStateSuccess}</p>
+                                </Alert>
+                                :
+                                null
+                        }
                             <div className="text-center">
                                 <Button variant="primary" type="submit">send</Button>
                             </div>
@@ -134,8 +160,8 @@ const Homepage = () => {
                                         <div>
                                             <Row >
                                                 <h6 className="col-10 msgdetail">Message Sender: {message.sender}</h6>
-                                                <Button style={{ width: '40px' }} className="ml-2 mr-1 px-0" onClick={(e) => editMessage(message, e)} ><FontAwesomeIcon icon={faEdit} /></Button>
-                                                <Button style={{ width: '40px' }} className="mr-2 px-0" onClick={(e) => deleteMessage(message, e)}><FontAwesomeIcon icon={faTrash} /></Button>
+                                                <Button style={{ width: '40px' }} className="mr-1" onClick={(e) => editMessage(message, e)} ><FontAwesomeIcon icon={faEdit} /></Button>
+                                                <Button style={{ width: '40px' }} onClick={(e) => deleteMessage(message, e)}><FontAwesomeIcon icon={faTrash} /></Button>
                                             </Row>
                                             <p className="msgdetail">{message.text}</p>
                                             {/* <ul className="replies">

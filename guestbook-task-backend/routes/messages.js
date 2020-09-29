@@ -20,7 +20,7 @@ messages.post('/addmessage', (req, res) => {
   else {
     Message.create(messageData)
       .then(message => {
-        res.json({ status: message.text + ' added!' })
+        res.json({ status: 'Message added!' })
       })
       .catch(err => {
         res.send('error: ' + err)
